@@ -6,6 +6,7 @@ snake[0] = {
     x: 8 * box,
     y: 8 * box
 }
+let direction = "right";
 
 function CriarBG() {
     context.fillStyle = "lightgreen"; //cor do fundo
@@ -19,5 +20,29 @@ function criarCobrinha() {
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
 }
-CriarBG();
-criarCobrinha();
+
+function iniciarJogo() {
+    CriarBG();
+    criarCobrinha();
+    /*movimentos da cobrinha */
+    let snakeX = snake[0].x;
+    let snakeY = snake[0].y;
+
+    if (direction == "right") snakeX += box // se a posição for igual a "right" a posição de snakeX vai acrescentar +1 quadradinho(box)
+    if (direction == "left") snakeX -= box; // como estamos no eixo x, a esquerda vc vai decrescendo, então coloque o sinal de decrementar
+    if (direction == "up") snakeY -= box;
+    if (direction == "down") snakeY += box;
+
+    snake.pop(); //retira o ultimo elemento do array
+
+    /*cabeça da cobrinha para saber onde ela começa*/
+    let newHead = {
+        x: snakeX,
+        y: snakeY
+    }
+
+    snake.unshift(newHead);
+
+}
+
+let jogo = setInterval(iniciarJogo, 100); //intervalo de milisegundos para iniciar jogo e a cada 100ms ela vai se renovar e dar continuada ao jogo sem ele travar
