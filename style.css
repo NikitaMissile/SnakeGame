@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #99EA6F;
+    background-color: #2D521A;
+    height: 99vh;
+    width: 99vw;
+}
